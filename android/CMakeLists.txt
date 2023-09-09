@@ -1,15 +1,38 @@
-cmake_minimum_required(VERSION 3.4.1)
+project(ReactNativeGeolocationJsi)
+cmake_minimum_required(VERSION 3.9.0)
 
+set (PACKAGE_NAME "cpp")
 set (CMAKE_VERBOSE_MAKEFILE ON)
 set (CMAKE_CXX_STANDARD 11)
 
-add_library(cpp
-            SHARED
-            ../cpp/react-native-geolocation-jsi.cpp
-            cpp-adapter.cpp
+file(TO_CMAKE_PATH "${NODE_MODULES_DIR}/react-native/ReactCommon/jsi/jsi/jsi.cpp" libPath)
+
+include_directories(
+  ../cpp
+  "${NODE_MODULES_DIR}/react-native/React"
+  "${NODE_MODULES_DIR}/react-native/React/Base"
+  "${NODE_MODULES_DIR}/react-native/ReactCommon/jsi"
+)
+add_library(${PACKAGE_NAME} # Library name
+  SHARED
+  ${libPath}
+  ../cpp/react-native-geolocation-jsi.cpp
+  ../cpp/react-native-geolocation-jsi.h
+  cpp-adapter.cpp
+  )
+
+
+# Configure C++ 17
+set_target_properties(
+        ${PACKAGE_NAME} PROPERTIES
+        CXX_STANDARD 17
+        CXX_EXTENSIONS OFF
+        POSITION_INDEPENDENT_CODE ON
 )
 
-# Specifies a path to native header files.
-include_directories(
-            ../cpp
-)
+# find_package(ReactAndroid REQUIRED CONFIG)
+
+target_link_libraries(
+  ${PACKAGE_NAME}
+  android
+  )
