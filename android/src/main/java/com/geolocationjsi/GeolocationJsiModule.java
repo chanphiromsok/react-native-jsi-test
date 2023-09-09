@@ -32,17 +32,17 @@ public class GeolocationJsiModule extends ReactContextBaseJavaModule {
   public boolean install() {
     try {
       Log.i(NAME, "Loading C++ library...");
-      System.loadLibrary("cpp");
+      System.loadLibrary("geolocationjsi");
 
       JavaScriptContextHolder jsContext = getReactApplicationContext().getJavaScriptContextHolder();
 //      if (rootDirectory == null) {
 //        rootDirectory = getReactApplicationContext().getFilesDir().getAbsolutePath();
 //      }
       nativeInstall(jsContext.get());
-      Log.i(NAME, "Successfully installed Geolocation JSI Bindings!");
+      Log.i(NAME, "Successfully installed geolocationjsi JSI Bindings!");
       return true;
     } catch (Exception exception) {
-      Log.e(NAME, "Failed to install Geolocation JSI Bindings!", exception);
+      Log.e(NAME, "Failed to install geolocationjsi JSI Bindings!", exception);
       return false;
     }
   }

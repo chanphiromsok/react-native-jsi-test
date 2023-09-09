@@ -13,7 +13,7 @@ include_directories(
   "${NODE_MODULES_DIR}/react-native/React/Base"
   "${NODE_MODULES_DIR}/react-native/ReactCommon/jsi"
 )
-add_library(${PACKAGE_NAME} # Library name
+add_library(geolocationjsi # Library name
   SHARED
   ${libPath}
   ../cpp/react-native-geolocation-jsi.cpp
@@ -24,7 +24,7 @@ add_library(${PACKAGE_NAME} # Library name
 
 # Configure C++ 17
 set_target_properties(
-        ${PACKAGE_NAME} PROPERTIES
+        geolocationjsi PROPERTIES
         CXX_STANDARD 17
         CXX_EXTENSIONS OFF
         POSITION_INDEPENDENT_CODE ON
@@ -33,6 +33,6 @@ set_target_properties(
 # find_package(ReactAndroid REQUIRED CONFIG)
 
 target_link_libraries(
-  ${PACKAGE_NAME}
+  geolocationjsi
   android
   )

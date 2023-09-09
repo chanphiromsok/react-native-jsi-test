@@ -2,15 +2,17 @@ import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
 
-import { NativeModules, isLoaded } from 'react-native-geolocation-jsi';
+import GeolocationJsi,{ NativeModules, isLoaded } from 'react-native-geolocation-jsi';
 export default function App() {
   React.useEffect(() => {
-    console.log(NativeModules.GeolocationJsi.install(), 'isLoad', isLoaded());
+    console.log(NativeModules.GeolocationJsi.install());
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {isLoaded() ? 'True' : 'False'}</Text>
+      <Text>Result: {GeolocationJsi.multiply(10,200)} </Text>
+      <Text>Hello Word: {GeolocationJsi.helloWorld()} </Text>
+      <Text>Is Installed {isLoaded() ? "true" : "false"}</Text>
     </View>
   );
 }

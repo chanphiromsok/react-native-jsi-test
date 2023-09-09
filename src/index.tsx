@@ -9,12 +9,17 @@ import { NativeModules, Platform } from 'react-native';
 // @ts-ignore
 const GeolocationJsi: {
   multiply(x: number, y: number): number;
-  getItem(key: string): string;
+  helloWorld(): string;
   //@ts-ignore
 } = global;
 
 export function isLoaded() {
-  return typeof GeolocationJsi.getItem === 'function';
+  return typeof NativeModules.GeolocationJsi.install === 'function';
+}
+
+
+if(typeof NativeModules.GeolocationJsi.install === 'function'){
+  NativeModules.GeolocationJsi.install();
 }
 // if (!isLoaded()) {
 //   const result = NativeModules.GeolocationJsi?.install();
