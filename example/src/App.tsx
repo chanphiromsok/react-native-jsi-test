@@ -10,8 +10,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Result: {GeolocationJsi.multiply(10,200)} </Text>
-      <Text>Hello Word: {GeolocationJsi.helloWorld()} </Text>
+      {/* <Text>Result: {GeolocationJsi.multiply(10,200)} </Text> */}
+      {/* <Text>Hello Word: {GeolocationJsi.helloWorld()} </Text> */}
+      <Text>Hello Word: {GeolocationJsi.getDeviceName()} </Text>
+
       <Text>Is Installed {isLoaded() ? "true" : "false"}</Text>
     </View>
   );

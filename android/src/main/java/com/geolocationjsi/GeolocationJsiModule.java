@@ -1,5 +1,6 @@
 package com.geolocationjsi;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -47,5 +48,25 @@ public class GeolocationJsiModule extends ReactContextBaseJavaModule {
     }
   }
 
+public String getModel() {
+  String manufacturer = Build.MANUFACTURER;
+  String model = Build.MODEL;
+  if (model.startsWith(manufacturer)) {
+    return model;
+  } else {
+    return manufacturer + " " + model;
+  }
+}
 
+public void setItem(final String key, final String value) {
+  SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this.getReactApplicationContext());
+  SharedPreferences.Editor editor = preferences.edit();
+  editor.putString(key, value);
+  editor.apply();
+}
+
+public String getItem(final String key) {
+  SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this.getReactApplicationContext());
+  return preferences.getString(key, "");
+}
 }
