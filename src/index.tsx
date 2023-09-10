@@ -10,6 +10,7 @@ import { NativeModules, Platform } from 'react-native';
 const GeolocationJsi: {
   multiply(x: number, y: number): number;
   helloWorld(): string;
+  getDeviceName:()=>string
   //@ts-ignore
 } = global;
 
