@@ -13,6 +13,7 @@ export default function App() {
       {/* <Text>Result: {GeolocationJsi.multiply(10,200)} </Text> */}
       {/* <Text>Hello Word: {GeolocationJsi.helloWorld()} </Text> */}
       <Text>Hello Word: {GeolocationJsi.getDeviceName()} </Text>
+      <Text>Decode Route: {GeolocationJsi.decodeRoute("DECODE_ROUTE")} </Text>
 
       <Text>Is Installed {isLoaded() ? "true" : "false"}</Text>
     </View>

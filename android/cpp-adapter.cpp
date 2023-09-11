@@ -95,6 +95,17 @@ void install(Runtime &jsiRuntime)
       });
   jsiRuntime.global().setProperty(jsiRuntime, "getDeviceName",
                                   move(getDeviceName));
+
+  // ====
+  auto decodeRoute = Function::createFromHostFunction(
+      jsiRuntime, PropNameID::forAscii(jsiRuntime, "decodeRoute"), 1,
+      [](Runtime &runtime, const Value &thisValue, const Value *arguments,
+         size_t count) -> Value
+      {
+        string encoded = arguments[0].asString(runtime).utf8(runtime);
+        return Value(runtime, String::createFromUtf8(runtime, encoded));
+      });
+  jsiRuntime.global().setProperty(jsiRuntime, "decodeRoute", move(decodeRoute));
 }
 
 extern "C" JNIEXPORT void JNICALL
