@@ -11,6 +11,7 @@ const GeolocationJsi: {
   multiply(x: number, y: number): number;
   helloWorld(): string;
   getDeviceName:()=>string
+  decodeRoute:(encoded:string)=>Array<{lat:number,lon:number}>
   //@ts-ignore
 } = global;
 
